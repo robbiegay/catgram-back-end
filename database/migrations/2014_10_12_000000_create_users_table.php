@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('page_bio', 150);
             $table->boolean('private')->default(false);
-            $table->string('profile_pic_id');
+            $table->binary('profile_pic');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -8,6 +8,43 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    // HAS
+    public function comment()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    public function dislike()
+    {
+        return $this->hasMany('App\Dislike');
+    }
+
+    public function followedBy()
+    {
+        return $this->hasMany('App\Follow');
+    }
+
+    public function post()
+    {
+        return $this->hasMany('App\Post');
+    }
+    
+    public function profilePicture()
+    {
+        return $this->hasOne('App\Post');
+    }
+
+    public function reportedBy()
+    {
+        return $this->hasOne('App\Report', 'reported_by_id');
+    }
+    
+    // BELONGS
+    public function following()
+    {
+        return $this->belongsTo('App\Follow', 'following_id');
+    }
+
     use Notifiable;
 
     /**
