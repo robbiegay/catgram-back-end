@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Resources\UserCollection;
+
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -13,7 +16,7 @@ class PostController extends Controller
 
     // View the post in the feed
     public function show() {
-        return view('welcome');
+        return new UserCollection(Post::all());
     }
 
     // Create a post

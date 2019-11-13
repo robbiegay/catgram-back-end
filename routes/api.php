@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Resources\UserCollection;
+use App\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +26,11 @@ Route::middleware('auth:api')->group(function () {
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+
+
+// Route::get('/users', function () {
+//     return new UserCollection(User::all());
+// });
+
+Route::get('/users', 'PostController@show');
