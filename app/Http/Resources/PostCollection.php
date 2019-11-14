@@ -3,8 +3,10 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Http\Resources\UserCollection;
+use App\User;
 
-class UserCollection extends ResourceCollection
+class PostCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,10 +16,11 @@ class UserCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        //dd($this);
         return [
-            'username' => $this[0]->username,
-            'profile_pic' => $this[0]->profile_pic,
+            'data' => $this->collection,
+            'links' => [
+                'self' => 'link-value',
+            ],
         ];
     }
 }

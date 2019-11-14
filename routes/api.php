@@ -27,6 +27,13 @@ Route::middleware('auth:api')->group(function () {
 //     return $request->user();
 // });
 
+Route::get('/posts', function() {
+    $post = Post::all();
+    $post->load('user');
+    //dd($post);
+    return new PostCollection($post);
+});
+
 
 
 // Route::get('/users', function () {

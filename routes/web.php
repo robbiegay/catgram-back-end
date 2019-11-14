@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Resources\PostCollection;
 use App\Http\Resources\UserCollection;
-use App\User;
+use App\Post;
 
 
 /*
@@ -15,9 +16,12 @@ use App\User;
 |
 */
 
+// Route::get('/login', 'UserController@login');
+// Route::get('/users', 'UserController@mynewfunct');
 
-Route::get('/users', function () {
-    return new UserCollection(User::all());
+Route::get('/posts', function() {
+    $post = Post::all();
+    $post->load('user');
+    //dd($post);
+    return new PostCollection($post);
 });
-
-Route::get('/posts', 'PostController@show');
