@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use App\Http\Resources\UserCollection;
+use App\Http\Resources\PostCollection;
 use App\User;
-
+use App\Post;
 
 /*
 |--------------------------------------------------------------------------
