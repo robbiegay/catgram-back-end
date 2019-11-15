@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Resources\PostCollection;
+use App\Http\Resources\UserCollection;
+use App\Post;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +16,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/login', 'UserController@login');
+// Route::get('/users', 'UserController@mynewfunct');
+
+Route::get('/posts', function() {
+    $post = Post::all();
+    $post->load('user');
+    //dd($post);
+    return new PostCollection($post);
 });
